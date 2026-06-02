@@ -137,11 +137,15 @@ document.querySelectorAll(
 const total =
 items.length;
 
-const radius =
-Math.min(
-    window.innerWidth * 0.9,
-    700
-);
+let radius;
+
+if(window.innerWidth <= 480){
+    radius = 520;
+}else if(window.innerWidth <= 768){
+    radius = 650;
+}else{
+    radius = 900;
+}
 
 items.forEach((item,index)=>{
 

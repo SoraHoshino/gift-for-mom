@@ -403,29 +403,26 @@ audio{
         font-size:1.4rem;
     }
 
+    .scene{
+        transform:scale(0.75);
+    }
+
     .carousel{
-        width:100vw;
-        height:100vh;
+        width:300px;
+        height:300px;
     }
 
     .item{
-
-        width:160px;
+        width:150px;
         height:200px;
 
-        margin-left:-80px;
-        margin-top:-100px;
+        left:75px;
+        top:50px;
     }
 
     .item.text{
-
-        font-size:.9rem;
-        padding:15px;
-    }
-
-    .item.text{
-
-        font-size:.9rem;
+        font-size:.85rem;
+        padding:12px;
     }
 
     #endingScreen h1{
@@ -437,5 +434,25 @@ audio{
     #secondMessage{
 
         font-size:1.2rem;
+    }
+}
+
+@media(max-width:480px){
+
+    .scene{
+        transform:scale(0.65);
+    }
+
+    .item{
+        width:140px;
+        height:190px;
+
+        left:80px;
+        top:55px;
+    }
+
+    .title{
+        font-size:1.3rem;
+        width:90%;
     }
 }
