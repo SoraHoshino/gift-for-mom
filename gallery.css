@@ -1,0 +1,441 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+
+    background:#000;
+
+    font-family:'Segoe UI',sans-serif;
+
+    perspective:2000px;
+}
+
+/* =========================
+   NỀN SAO
+========================= */
+
+#stars{
+    position:fixed;
+    inset:0;
+    z-index:1;
+}
+
+/* =========================
+   NHẠC
+========================= */
+
+audio{
+    display:none;
+}
+
+/* =========================
+   TIÊU ĐỀ
+========================= */
+
+.title{
+
+    position:fixed;
+
+    top:25px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:100;
+
+    color:white;
+
+    font-size:2rem;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    text-shadow:
+        0 0 10px white,
+        0 0 20px white,
+        0 0 40px gold,
+        0 0 80px gold;
+}
+
+/* =========================
+   SCENE
+========================= */
+
+.scene{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:5;
+}
+
+/* =========================
+   CAROUSEL
+========================= */
+
+.carousel{
+
+    position:relative;
+
+    width:320px;
+    height:320px;
+
+    transform-style:preserve-3d;
+
+    transition:
+        transform .15s linear,
+        opacity 2.5s ease;
+}
+
+/* =========================
+   ITEM
+========================= */
+
+.item{
+
+    position:absolute;
+
+    width:min(240px, 60vw);
+
+    height:min(280px, 70vw);
+
+    left:50%;
+    top:50%;
+
+    margin-left:-120px;
+    margin-top:-140px;
+
+    transform-style:preserve-3d;
+}
+
+/* =========================
+   ẢNH
+========================= */
+
+.item.image{
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.2),
+        0 0 60px rgba(255,215,0,.15);
+
+    transition:.4s;
+}
+
+.item.image:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 30px white,
+        0 0 100px gold;
+}
+
+.item img,
+.item video{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+}
+
+/* =========================
+   LỜI CHÚC
+========================= */
+
+.item.text{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:20px;
+
+    color:white;
+
+    font-size:1.1rem;
+
+    line-height:1.7;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    backdrop-filter:blur(10px);
+
+    text-shadow:
+        0 0 10px white,
+        0 0 20px gold;
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,.15),
+        0 0 50px rgba(255,215,0,.15);
+}
+
+/* =========================
+   MỜ DẦN KHI KẾT THÚC
+========================= */
+
+.carousel.fade{
+
+    opacity:0;
+}
+
+/* =========================
+   MÀN KẾT
+========================= */
+
+#endingScreen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    transition:2s ease;
+}
+
+#endingScreen.show{
+
+    opacity:1;
+}
+
+#endingScreen h1{
+
+    color:white;
+
+    text-align:center;
+
+    font-size:3rem;
+
+    line-height:1.5;
+
+    text-shadow:
+        0 0 20px white,
+        0 0 40px gold,
+        0 0 80px gold;
+}
+
+#secondMessage{
+
+    margin-top:30px;
+
+    font-size:1.6rem;
+
+    color:white;
+
+    opacity:0;
+
+    transition:2s;
+}
+
+#secondMessage.show{
+
+    opacity:1;
+}
+
+#signature{
+
+    margin-top:15px;
+
+    color:#ddd;
+
+    font-size:1rem;
+
+    letter-spacing:3px;
+
+    opacity:.8;
+}
+
+/* =========================
+   HẠT SÁNG
+========================= */
+
+.sparkle{
+
+    position:absolute;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:white;
+
+    z-index:2;
+
+    animation:
+        sparkle 2.5s infinite;
+}
+
+@keyframes sparkle{
+
+    0%{
+        opacity:0;
+        transform:scale(0);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(2);
+    }
+
+    100%{
+        opacity:0;
+        transform:scale(0);
+    }
+}
+
+/* =========================
+   SAO BĂNG
+========================= */
+
+.shooting-star{
+
+    position:absolute;
+
+    width:2px;
+    height:140px;
+
+    background:
+        linear-gradient(
+            transparent,
+            white
+        );
+
+    transform:rotate(45deg);
+
+    opacity:0;
+
+    z-index:2;
+
+    animation:
+        shooting 10s linear infinite;
+}
+
+@keyframes shooting{
+
+    0%{
+        top:-200px;
+        left:-200px;
+        opacity:0;
+    }
+
+    5%{
+        opacity:1;
+    }
+
+    20%{
+        top:120%;
+        left:120%;
+        opacity:0;
+    }
+
+    100%{
+        top:120%;
+        left:120%;
+        opacity:0;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .title{
+
+        font-size:1.4rem;
+    }
+
+    .carousel{
+        width:100vw;
+        height:100vh;
+    }
+
+    .item{
+
+        width:160px;
+        height:200px;
+
+        margin-left:-80px;
+        margin-top:-100px;
+    }
+
+    .item.text{
+
+        font-size:.9rem;
+        padding:15px;
+    }
+
+    .item.text{
+
+        font-size:.9rem;
+    }
+
+    #endingScreen h1{
+
+        font-size:2rem;
+        width:90%;
+    }
+
+    #secondMessage{
+
+        font-size:1.2rem;
+    }
+}

@@ -1,0 +1,303 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    background:#000;
+    position:relative;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* =========================
+   CANVAS SAO
+========================= */
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+}
+
+/* =========================
+   KHỐI CHỮ CHÍNH
+========================= */
+
+.center-text{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    z-index:100;
+    cursor:pointer;
+    user-select:none;
+
+    animation:
+        floating 4s ease-in-out infinite,
+        glowPulse 3s ease-in-out infinite;
+}
+
+.center-text h1{
+
+    color:white;
+
+    font-size:4rem;
+
+    line-height:1.3;
+
+    text-shadow:
+        0 0 10px #ffffff,
+        0 0 20px #ffffff,
+        0 0 40px #ffd700,
+        0 0 80px #ffd700,
+        0 0 120px #ffd700;
+}
+
+.center-text p{
+
+    margin-top:25px;
+
+    color:#dddddd;
+
+    font-size:1.1rem;
+
+    letter-spacing:2px;
+
+    animation:blink 2s infinite;
+}
+
+/* =========================
+   HẠT LẤP LÁNH
+========================= */
+
+.sparkle{
+
+    position:absolute;
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:white;
+
+    z-index:20;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px white,
+        0 0 30px gold;
+
+    animation:sparkle 2.5s linear infinite;
+}
+
+/* =========================
+   SAO BĂNG
+========================= */
+
+.shooting-star{
+
+    position:absolute;
+
+    top:-200px;
+
+    left:-200px;
+
+    width:2px;
+
+    height:140px;
+
+    opacity:0;
+
+    z-index:5;
+
+    background:linear-gradient(
+        transparent,
+        white
+    );
+
+    transform:rotate(45deg);
+
+    animation:shoot 8s linear infinite;
+}
+
+/* =========================
+   HIỆU ỨNG CHUYỂN TRANG
+========================= */
+
+.fade-out{
+    animation:fadeOut 1.5s forwards;
+}
+
+/* =========================
+   FLOAT
+========================= */
+
+@keyframes floating{
+
+    0%{
+        transform:
+        translate(-50%,-50%);
+    }
+
+    50%{
+        transform:
+        translate(-50%,-54%);
+    }
+
+    100%{
+        transform:
+        translate(-50%,-50%);
+    }
+}
+
+/* =========================
+   SÁNG NHẤP NHÁY
+========================= */
+
+@keyframes glowPulse{
+
+    0%{
+        filter:brightness(1);
+    }
+
+    50%{
+        filter:brightness(1.4);
+    }
+
+    100%{
+        filter:brightness(1);
+    }
+}
+
+/* =========================
+   CHỮ NHẤP NHÁY
+========================= */
+
+@keyframes blink{
+
+    0%{
+        opacity:.4;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:.4;
+    }
+}
+
+/* =========================
+   HẠT SÁNG
+========================= */
+
+@keyframes sparkle{
+
+    0%{
+        transform:scale(0);
+        opacity:0;
+    }
+
+    50%{
+        transform:scale(1.8);
+        opacity:1;
+    }
+
+    100%{
+        transform:scale(0);
+        opacity:0;
+    }
+}
+
+/* =========================
+   SAO BĂNG
+========================= */
+
+@keyframes shoot{
+
+    0%{
+        top:-200px;
+        left:-200px;
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    25%{
+        top:100%;
+        left:100%;
+        opacity:0;
+    }
+
+    100%{
+        top:100%;
+        left:100%;
+        opacity:0;
+    }
+}
+
+/* =========================
+   FADE OUT
+========================= */
+
+@keyframes fadeOut{
+
+    from{
+        opacity:1;
+    }
+
+    to{
+        opacity:0;
+    }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:768px){
+
+    .center-text h1{
+        font-size:2.8rem;
+    }
+
+    .center-text p{
+        font-size:1rem;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px){
+
+    .center-text h1{
+        font-size:2rem;
+    }
+
+    .center-text p{
+        font-size:.9rem;
+    }
+}

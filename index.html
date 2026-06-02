@@ -1,0 +1,161 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Mẹ</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <canvas id="stars"></canvas>
+
+    <div class="center-text" id="startBtn">
+
+        <h1>
+            Chúc Mừng Sinh Nhật<br>
+            Mẹ Yêu Của Con ❤️
+        </h1>
+
+        <p>
+            Nhấn vào đây để mở món quà
+        </p>
+
+    </div>
+
+    <script>
+
+        const canvas = document.getElementById("stars");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let stars = [];
+
+        for (let i = 0; i < 500; i++) {
+
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2,
+                alpha: Math.random(),
+                speed: (Math.random() * 0.02) + 0.005
+            });
+
+        }
+
+        function animateStars() {
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            stars.forEach(star => {
+
+                star.alpha += star.speed;
+
+                if (star.alpha >= 1 || star.alpha <= 0) {
+                    star.speed *= -1;
+                }
+
+                ctx.beginPath();
+                ctx.arc(
+                    star.x,
+                    star.y,
+                    star.radius,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.fillStyle =
+                    `rgba(255,255,255,${star.alpha})`;
+
+                ctx.fill();
+            });
+
+            requestAnimationFrame(
+                animateStars
+            );
+        }
+
+        animateStars();
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                canvas.width =
+                    window.innerWidth;
+
+                canvas.height =
+                    window.innerHeight;
+            }
+        );
+
+        for (let i = 0; i < 70; i++) {
+
+            const sparkle =
+                document.createElement("div");
+
+            sparkle.classList.add("sparkle");
+
+            sparkle.style.left =
+                Math.random() * 100 + "vw";
+
+            sparkle.style.top =
+                Math.random() * 100 + "vh";
+
+            sparkle.style.animationDelay =
+                Math.random() * 3 + "s";
+
+            document.body.appendChild(
+                sparkle
+            );
+        }
+
+        for (let i = 0; i < 4; i++) {
+
+            const shootingStar =
+                document.createElement("div");
+
+            shootingStar.classList.add(
+                "shooting-star"
+            );
+
+            shootingStar.style.animationDelay =
+                (i * 4) + "s";
+
+            document.body.appendChild(
+                shootingStar
+            );
+        }
+
+        document
+            .getElementById("startBtn")
+            .addEventListener(
+                "click",
+                () => {
+
+                    document.body
+                        .classList
+                        .add("fade-out");
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "gallery.html";
+
+                    }, 1500);
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>
+```
